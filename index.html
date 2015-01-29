@@ -1,10 +1,30 @@
-<DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html ng-app='parseQ'>
 <head>
 	<title>ParseQ</title>
 </head>
-<body>
+<body ng-controller='parseController'>
 
-<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<form ng-submit='sendDaQuestion()'>
+	<input ng-model='mahQuestion'><button>Get in da Queueueue</button>
+</form>
+
+<div class='waiting'>
+	<div ng-repeat="wait in waiting | filter: {status: 'red'}">{{wait.question}}
+		<button ng-click='help(wait)'>Help da pupil</button>
+	</div>
+</div>
+
+<div class='helping'>
+	<div ng-repeat="help in waiting | filter: {status: 'yellow'}">{{help.question}}
+		<button ng-click='delete(help)'>Delete da pupil</button>
+	</div>
+</div>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+<script src='js/app.js'></script>
+<script src='js/defaultHeaders.js'></script>
+<script src='js/controller.js'></script>
+<script src='js/service.js'></script>
 </body>
 </html>
