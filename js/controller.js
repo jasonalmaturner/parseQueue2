@@ -26,7 +26,6 @@ $scope.getQuestions = function(){
 $scope.help = function(wait){
 	wait.status = 'yellow';
 	parseService.updateData(wait).then(function(res){
-		console.log(res);
 		$scope.getQuestions();
 	}, function(err){
 		console.log(err);
@@ -34,9 +33,7 @@ $scope.help = function(wait){
 };
 
 $scope.delete = function(object){
-	console.log(object)
 	parseService.deleteQuestion(object).then(function(res){
-		console.log(res);
 		$scope.getQuestions();
 	}, function(err){
 		console.log(err);
